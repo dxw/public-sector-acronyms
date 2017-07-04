@@ -4,40 +4,36 @@ require "json"
 require "slugify"
 require "haml"
 require "tilt"
+require "yaml"
 
 BUILD_DIR = "dist"
 FileUtils.rm_rf(BUILD_DIR) if Dir.exist?(BUILD_DIR)
 Dir.mkdir(BUILD_DIR)
 
-primary_key = ENV["PRIMARY_KEY"] || "acronym"
+primary_key = "acronym"
 
-csv_files = Dir["./*.csv"].reject { |f| File.directory?(f) }
+yml_files = Dir["./*.yml"].reject { |f| File.directory?(f) }
 
 # Loop through each CSV file in the directory
-csv_files.each do |file_name|
-  dataset_slug = File.basename(file_name, ".csv").slugify
+yml_files.each do |file_name|
+  dataset_slug = File.basename(file_name, ".yml").slugify
   puts "Processing #{dataset_slug}"
   Dir.mkdir("#{BUILD_DIR}/#{dataset_slug}") unless Dir.exist?("#{BUILD_DIR}/#{dataset_slug}")
 
   rows = Array.new
 
   # Write a file for each row
-  CSV.foreach(file_name, {
-    encoding: "UTF-8",
-    headers: true,
-    header_converters: :symbol,
-    converters: :all
-  }) do |row|
+  YAML.load(File.read(file_name)).each do |row|
     rows.push(row.to_hash)
-    target_file = row[primary_key.to_sym].to_s.slugify
+    target_file = row[primary_key].to_s.slugify
     if target_file
-      row_json = JSON.generate(row.to_hash)
+      row_json = JSON.generate(row)
       File.open("#{BUILD_DIR}/#{dataset_slug}/#{target_file}.json", "w") { |f| f.write(row_json) }
     end
   end
 
   # Sort by acronym and remove empty rows
-  rows.sort_by!{|x| x[:acronym].to_s }.reject!(&:empty?)
+  rows.sort_by!{|x| x['acronym'].to_s }.reject!(&:empty?)
 
   # Write full dataset to file
   rows_json = JSON.generate(rows)

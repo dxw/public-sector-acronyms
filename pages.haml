@@ -1,7 +1,7 @@
 !!! 5
 %html
   %head
-    %title Acronyms
+    %title Acronyms &amp; Abbreviations
     %style
       body { background-color: #fff; color: #000; font-family: Verdana, Arial; }
       table { border-collapse: collapse; padding: 1em 0; }
@@ -9,10 +9,10 @@
       td { border-top: 1px solid #000; padding: 0.5em; text-align: left; }
 
   %body
-    %h1 Acronyms
+    %h1 Acronyms &amp; Abbreviations
     %p
       When working with public sector organisations, you may come across
-      numerous acronyms that you do not understand. This page lists some common ones.
+      numerous acronyms and abbreviations that you do not understand.
 
     %table
       %tr
@@ -23,11 +23,11 @@
           %tr
             %td
               %strong
-                - unless row[:website].to_s.empty?
-                  %a{ href: row[:website] }
-                    = row[:acronym]
+                - unless row['website'].to_s.empty?
+                  %a{ href: row['website'] }
+                    = row['acronym']
                 - else
-                  = row[:acronym]
+                  = row['acronym']
             %td
-              = row[:meaning]
+              = row['meaning']
 
