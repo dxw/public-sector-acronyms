@@ -14,6 +14,30 @@
   meaning: Government Digital Service
   website: https://gds.blog.gov.uk/
 
+- acronym: BIS
+  meaning: Department for Business, Innovation and Skills
 
+- acronym: CO
+  meaning: Cabinet Office
 
+- acronym: Defra
+  meaning: Department for Environemnt, Food and Rural Affairs
+
+- acronym: HMRC
+  meaning: Her Majesty's Revenue and Customs
+
+- acronym: HO
+  meaning: Home Office
+
+- acronym: MoJ
+  meaning: Ministry of Justice
+
+- acronym: NAO
+  meaning: National Audit Office
+
+- acronym: ONS
+  meaning: Office of National Statistics
+
+- acronym: FoI
+  meaning: Freedom of Information
 
