@@ -5,8 +5,9 @@
     %style
       body { background-color: #fff; color: #000; font-family: Verdana, Arial; }
       table { border-collapse: collapse; padding: 1em 0; }
-      th { border-bottom: 1px solid #000; padding: 0.5em; text-align: left; }
-      td { border-top: 1px solid #000; padding: 0.5em; text-align: left; }
+      th { border-bottom: 1px solid #000; padding: 0.5em 1em; text-align: left; }
+      td { border: 0; padding: 0.5em 1em; text-align: left; }
+      tr:nth-child(even) { background-color: #eee; }
 
   %body
     %h1 Acronyms &amp; Abbreviations
@@ -22,12 +23,11 @@
         - unless row.empty?
           %tr
             %td
-              %strong
-                - unless row['website'].to_s.empty?
-                  %a{ href: row['website'] }
-                    = row['acronym']
-                - else
+              - unless row['website'].to_s.empty?
+                %a{ href: row['website'] }
                   = row['acronym']
+              - else
+                = row['acronym']
             %td
               = row['meaning']
 
