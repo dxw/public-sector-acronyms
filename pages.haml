@@ -1,0 +1,33 @@
+!!! 5
+%html
+  %head
+    %title Acronyms
+    %style
+      body { background-color: #fff; color: #000; font-family: Verdana, Arial; }
+      table { border-collapse: collapse; padding: 1em 0; }
+      th { border-bottom: 1px solid #000; padding: 0.5em; text-align: left; }
+      td { border-top: 1px solid #000; padding: 0.5em; text-align: left; }
+
+  %body
+    %h1 Acronyms
+    %p
+      When working with public sector organisations, you may come across
+      numerous acronyms that you do not understand. This page lists some common ones.
+
+    %table
+      %tr
+        %th Acronym
+        %th Meaning
+      - rows.each do |row|
+        - unless row.empty?
+          %tr
+            %td
+              %strong
+                - unless row[:website].to_s.empty?
+                  %a{ href: row[:website] }
+                    = row[:acronym]
+                - else
+                  = row[:acronym]
+            %td
+              = row[:meaning]
+
