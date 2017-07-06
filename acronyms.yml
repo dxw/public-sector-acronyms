@@ -23,6 +23,9 @@
 - acronym: Defra
   meaning: Department for Environemnt, Food and Rural Affairs
 
+- acronym: DWP
+  meaning: Department for Work and Pensions
+
 - acronym: HMRC
   meaning: Her Majesty's Revenue and Customs
 
@@ -69,3 +72,6 @@
 
 - acronym: QAR
   meaning: Quarterly Assurance Reviews
+
+- acronym: STA
+  meaning: Senior Technical Advisor
