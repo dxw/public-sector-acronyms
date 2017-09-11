@@ -10,3 +10,21 @@ The list is also available in [JSON format](https://dxw.github.io/public-sector-
    sorted automatically.
  - Open a Pull Request
  - Approved changes are published on the above URLs
+
+## Atom snippet
+
+If you use Atom, you might want to add this to ~/.atom/snippets.cson, to ease adding things:
+
+```
+'.source.yaml':
+  'New acronym':
+    'prefix': '-'
+    'body': """
+    - acronym: $1
+      meaning: $2
+
+    $3
+    """
+```
+
+This would be very annoying in any other YAML file, so best to remove it when you're finished.
