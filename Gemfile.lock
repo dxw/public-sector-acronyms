@@ -1,7 +1,7 @@
 GEM
   remote: https://rubygems.org/
   specs:
-    haml (5.0.0)
+    haml (5.1.2)
       temple (>= 0.8.0)
       tilt
     slugify (1.0.7)
@@ -17,4 +17,4 @@ DEPENDENCIES
   tilt
 
 BUNDLED WITH
-   1.15.1
+   1.17.2
