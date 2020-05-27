@@ -44,5 +44,8 @@ yml_files.each do |file_name|
   page = template.render(Object.new, rows: rows)
 
   File.open("#{BUILD_DIR}/#{dataset_slug}/index.html", "w") { |f| f.write(page) }
-end
 
+  # Copy the health check file over
+  Dir.mkdir("#{BUILD_DIR}/#{dataset_slug}/check") unless Dir.exist?("#{BUILD_DIR}/#{dataset_slug}/check")
+  FileUtils.cp("check/index.html", "#{BUILD_DIR}/#{dataset_slug}/check")
+end
